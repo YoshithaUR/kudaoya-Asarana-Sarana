@@ -1,0 +1,163 @@
+/* ============================================================
+   LOADER — Cinematic Preloader Styles
+   ============================================================ */
+.loader-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #02040a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease;
+}
+
+.loader-wrapper.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.1);
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* ── Logo Container ── */
+.loader-logo-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-icon {
+    color: #fff;
+    z-index: 2;
+    animation: loaderPulse 2s ease-in-out infinite;
+}
+
+.loader-logo-img {
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+    z-index: 2;
+    border-radius: 50%;
+    animation: loaderPulse 2s ease-in-out infinite;
+}
+
+.loader-glow {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+    filter: blur(20px);
+    z-index: 0;
+}
+
+.loader-circle-outer {
+    position: absolute;
+    inset: 0;
+    border: 3px solid rgba(129, 140, 248, 0.1);
+    border-radius: 50%;
+    border-top-color: #6366F1;
+    animation: loaderSpin 2s linear infinite;
+}
+
+.loader-circle-inner {
+    position: absolute;
+    inset: 15px;
+    border: 3px solid rgba(217, 70, 239, 0.1);
+    border-radius: 50%;
+    border-bottom-color: #D946EF;
+    animation: loaderSpin 1.5s linear infinite reverse;
+}
+
+/* ── Text ── */
+.loader-text {
+    text-align: center;
+    animation: loaderTextFade 2s ease-in-out infinite;
+}
+
+.loader-text h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+    font-family: 'Abhaya Libre', 'Noto Sans Sinhala', serif;
+}
+
+.loader-text p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+/* ── Progress ── */
+.loader-progress-container {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loader-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #6366F1, #D946EF);
+    transition: width 0.3s ease-out;
+    border-radius: 999px;
+}
+
+.loader-progress-text {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #4f567a;
+}
+
+/* ── Animations ── */
+@keyframes loaderSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loaderPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes loaderTextFade {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}

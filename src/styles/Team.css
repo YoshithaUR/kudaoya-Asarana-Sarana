@@ -1,0 +1,535 @@
+/* ============================================================
+   TEAM / COMMUNITY MEMBERS — Cinematic Redesign
+   ============================================================ */
+
+.team {
+    position: relative;
+    background: #03050d;
+    padding: 8rem 0;
+    overflow: hidden;
+    color: #e2e8f0;
+}
+
+.section-bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    /* Subtle background */
+    filter: saturate(0.5);
+}
+
+/* ── Background Effects ── */
+.team-grid-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        radial-gradient(rgba(129, 140, 248, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.team-orb {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* ── Container ── */
+.team-container {
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 4rem;
+    box-sizing: border-box;
+}
+
+/* ── Header ── */
+.team-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.team-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.25rem;
+    background: rgba(217, 70, 239, 0.1);
+    border: 1px solid rgba(217, 70, 239, 0.3);
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #e879f9;
+    margin-bottom: 1.5rem;
+}
+
+.team-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #D946EF;
+    animation: pulse 2s infinite;
+}
+
+.team-title {
+    font-family: 'Abhaya Libre', 'Noto Sans Sinhala', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.team-title-accent {
+    background: linear-gradient(135deg, #e879f9, #818CF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.team-desc {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 0.95rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── Slider Layout ── */
+.team-slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+.team-slider-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.team-slider-track {
+    display: flex;
+    align-items: stretch;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.team-slide {
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Navigation Buttons ── */
+.team-slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.team-nav-btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    color: #a5b4fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.team-nav-btn:hover {
+    background: rgba(129, 140, 248, 0.15);
+    border-color: #818CF8;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
+}
+
+.team-nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* ── Team Card ── */
+.team-card {
+    position: relative;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(129, 140, 248, 0.15);
+    border-radius: 1.25rem;
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(129, 140, 248, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+.team-card:hover::before {
+    opacity: 1;
+}
+
+/* Avatar */
+.team-avatar-box {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.25rem;
+    z-index: 1;
+}
+
+.team-avatar-border {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366F1, #D946EF);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    animation: spin 8s linear infinite;
+}
+
+.team-card:hover .team-avatar-border {
+    opacity: 1;
+    inset: -6px;
+    filter: blur(4px);
+}
+
+.team-avatar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #1e293b;
+    /* Placeholder color before img loads */
+    border: 3px solid #03050d;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* Social Icon Float */
+.team-social-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border: 3px solid #03050d;
+    z-index: 3;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.team-card:hover .team-social-icon {
+    transform: scale(1.15) rotate(-10deg);
+}
+
+/* Info */
+.team-name {
+    position: relative;
+    font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+    z-index: 1;
+}
+
+.team-role {
+    position: relative;
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 0.85rem;
+    color: #a5b4fc;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    z-index: 1;
+    display: block;
+}
+
+.team-quote {
+    position: relative;
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    z-index: 1;
+    font-style: italic;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-quote strong {
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+/* ── Team Member Modal Popup ── */
+.team-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(3, 5, 13, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.team-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.team-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    background: #0f172a;
+    border: 1px solid rgba(129, 140, 248, 0.25);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(99, 102, 241, 0.2);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-modal-overlay.active .team-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.team-modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.team-modal-close:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #fff;
+}
+
+.team-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.team-modal-avatar-box {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 1.5rem;
+}
+
+.team-modal-avatar-border {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366F1, #D946EF);
+    animation: spin 8s linear infinite;
+    filter: blur(2px);
+}
+
+.team-modal-avatar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0f172a;
+    z-index: 2;
+}
+
+.team-modal-role {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: rgba(129, 140, 248, 0.15);
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    border-radius: 9999px;
+    color: #a5b4fc;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.team-modal-name {
+    font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.team-modal-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #6366F1, #D946EF);
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.team-modal-quote {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    border-left: 3px solid #818CF8;
+}
+
+.team-modal-quote strong {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Animations */
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .team-container {
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .team {
+        padding: 4rem 0;
+    }
+
+    .team-container {
+        padding: 0 1rem;
+    }
+
+    .team-slide {
+        padding: 0 0.5rem;
+    }
+
+    .team-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .team-modal-overlay {
+        padding: 0.75rem;
+    }
+
+    .team-modal-content {
+        padding: 2rem 1.25rem 1.5rem;
+        max-height: 85vh;
+    }
+
+    .team-modal-avatar-box {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+    }
+
+    .team-modal-name {
+        font-size: 1.2rem;
+    }
+
+    .team-modal-role {
+        font-size: 0.8rem;
+    }
+
+    .team-modal-quote {
+        padding: 1rem;
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .team-container {
+        padding: 0 0.5rem;
+    }
+
+    .team-title {
+        font-size: 1.8rem;
+    }
+}

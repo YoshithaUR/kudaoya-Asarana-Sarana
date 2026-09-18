@@ -1,0 +1,621 @@
+/* ============================================================
+   OUR PROJECTS — Cinematic Gallery & Details Modal
+   ============================================================ */
+
+.projects {
+    position: relative;
+    background: #03050d;
+    padding: 8rem 0;
+    overflow: hidden;
+    color: #e2e8f0;
+}
+
+.section-bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    filter: saturate(0.5);
+}
+
+/* ── Background ── */
+.projects-grid-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 20%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 20%, transparent 100%);
+}
+
+.projects-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.projects-orb-1 {
+    width: min(600px, 90vw);
+    height: min(600px, 90vw);
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    top: 10%;
+    left: -15%;
+}
+
+.projects-orb-2 {
+    width: min(500px, 90vw);
+    height: min(500px, 90vw);
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+    bottom: -15%;
+    right: -10%;
+}
+
+/* ── Container & Header ── */
+.projects-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.projects-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.projects-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.25rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #818cf8;
+    margin-bottom: 1.5rem;
+}
+
+.projects-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #6366f1;
+    animation: pulse 2s infinite;
+}
+
+.projects-title {
+    font-family: 'Abhaya Libre', 'Noto Sans Sinhala', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.projects-title-accent {
+    background: linear-gradient(135deg, #a5b4fc, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Removed old navigation CSS */
+
+/* ── Projects Slider Layout ── */
+.projects-slider-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.projects-slider-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.projects-slider-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1.2, 0.5, 1);
+}
+
+.project-slide {
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
+}
+
+/* ── Navigation Buttons ── */
+.projects-slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.slider-nav-btn {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #818cf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.slider-nav-btn:hover {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: #818cf8;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
+}
+
+.slider-nav-btn:active {
+    transform: scale(0.95);
+}
+
+.project-card {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(129, 140, 248, 0.15);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(129, 140, 248, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+.project-image-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.project-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-image-box img {
+    transform: scale(1.08);
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(3, 5, 13, 0.9), transparent);
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 0.8;
+}
+
+.project-category-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(3, 5, 13, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: #a5b4fc;
+    font-weight: 600;
+}
+
+.project-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-title {
+    font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.project-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.project-short-desc {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 0.88rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.project-view-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a5b4fc;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-view-btn {
+    color: #f472b6;
+}
+
+/* ============================================================
+   PROJECT MODAL (Details + Gallery)
+   ============================================================ */
+.project-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(2, 4, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 2rem;
+}
+
+.project-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.project-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    background: linear-gradient(160deg, #0a0f25 0%, #0e163b 100%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-modal-overlay.active .project-modal-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Modal Close Button */
+.p-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.p-modal-close:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Modal Sections */
+.p-modal-hero {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.p-modal-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.p-modal-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #0a0f25, transparent 80%);
+}
+
+.p-modal-body {
+    padding: 2rem 3rem 4rem;
+}
+
+.p-modal-tag {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.p-modal-title {
+    font-family: 'Abhaya Libre', 'Noto Sans Sinhala', serif;
+    font-size: 1.85rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.p-modal-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+.p-modal-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.p-modal-desc {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 2.5rem;
+}
+
+/* Grid for Features / Goals inside modal */
+.p-modal-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.p-feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.p-feature-card h4 {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.p-feature-card p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Gallery inside Modal */
+.p-modal-gallery-title {
+    font-family: 'Abhaya Libre', 'Noto Sans Sinhala', serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.5rem;
+}
+
+.p-modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.85rem;
+}
+
+.p-gallery-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.p-gallery-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.p-gallery-img:hover img {
+    transform: scale(1.1);
+}
+
+/* Modal scroll */
+.project-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.project-modal-content::-webkit-scrollbar-track {
+    background: #0a0f25;
+    border-radius: 0 1.5rem 1.5rem 0;
+}
+
+.project-modal-content::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 10px;
+}
+
+.project-modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.6);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .project-modal-overlay {
+        padding: 0.75rem;
+    }
+
+    .project-modal-content {
+        max-height: 88vh;
+        border-radius: 1.25rem;
+    }
+
+    .p-modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 38px;
+        height: 38px;
+    }
+
+    .p-modal-features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .p-modal-hero {
+        height: 200px;
+    }
+
+    .p-modal-body {
+        padding: 1.25rem 1.25rem 2rem;
+    }
+
+    .p-modal-title {
+        font-size: 1.5rem;
+    }
+
+    .p-modal-gallery-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .slider-nav-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 640px) {
+    .projects {
+        padding: 4rem 0;
+    }
+
+    .projects-container {
+        padding: 0 1rem;
+    }
+
+    .projects-title {
+        font-size: 2.2rem;
+    }
+
+    .project-slide {
+        padding: 0 0.5rem;
+    }
+
+    .project-card {
+        padding-bottom: 1rem;
+    }
+
+    .project-info {
+        padding: 1.25rem 1rem;
+    }
+
+    .project-title.si-text {
+        font-size: 1.15rem;
+    }
+
+    .project-short-desc {
+        font-size: 0.88rem;
+        line-height: 1.6;
+    }
+
+    .slider-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 360px) {
+    .projects-container {
+        padding: 0 0.5rem;
+    }
+
+    .projects-title {
+        font-size: 1.8rem;
+    }
+
+    .p-modal-meta {
+        font-size: 0.85rem;
+        gap: 0.6rem 1rem;
+    }
+}

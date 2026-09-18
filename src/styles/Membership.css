@@ -1,0 +1,286 @@
+/* ============================================================
+   MEMBERSHIP — Join Us Section
+   ============================================================ */
+.membership {
+    position: relative;
+    background: #03050d;
+    padding: 5rem 0;
+    overflow: hidden;
+    color: #e2e8f0;
+}
+
+.membership-container {
+    position: relative;
+    z-index: 10;
+}
+
+.membership-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.membership-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.25rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin-bottom: 1.25rem;
+}
+
+.membership-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #818CF8;
+    animation: pulse 2s infinite;
+}
+
+.membership-title {
+    font-family: 'Abhaya Libre', 'Noto Sans Sinhala', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.membership-title-accent {
+    background: linear-gradient(135deg, #818CF8, #D946EF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.membership-desc {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 0.95rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── Content Layout ── */
+.membership-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* ── Steps ── */
+.membership-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.step-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.step-icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(129, 140, 248, 0.1);
+    border: 1px solid rgba(129, 140, 248, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #818CF8;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.step-item:hover .step-icon-box {
+    background: rgba(129, 140, 248, 0.2);
+    border-color: #818CF8;
+    transform: scale(1.1);
+}
+
+.step-text h3 {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.step-text p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* ── Action Card ── */
+.membership-action-card {
+    position: relative;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(129, 140, 248, 0.2);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.action-card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.action-icon {
+    color: #818CF8;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.membership-action-card h4 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.membership-action-card p {
+    font-size: 0.88rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-download {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    color: #fff;
+    padding: 0.9rem 1.8rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.btn-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.45);
+    filter: brightness(1.1);
+}
+
+.action-features {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.feature-icon {
+    color: #10B981;
+}
+
+.feature-item span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .membership-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .membership {
+        padding: 4rem 0;
+    }
+
+    .membership-container {
+        padding: 0 1rem;
+    }
+
+    .step-item {
+        gap: 1rem;
+    }
+
+    .step-icon-box {
+        width: 44px;
+        height: 44px;
+    }
+
+    .step-text h3 {
+        font-size: 1.05rem;
+    }
+
+    .step-text p {
+        font-size: 0.85rem;
+    }
+
+    .membership-action-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+        padding: 0.85rem 1rem;
+        font-size: 0.88rem;
+        text-align: center;
+    }
+
+    .action-features {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .membership-container {
+        padding: 0 0.5rem;
+    }
+
+    .membership-title {
+        font-size: 1.8rem;
+    }
+
+    .membership-action-card {
+        padding: 1.5rem 0.85rem;
+    }
+}
