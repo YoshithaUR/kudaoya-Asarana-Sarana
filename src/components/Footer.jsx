@@ -1,5 +1,5 @@
 import { Facebook, Twitter, Instagram, MapPin, Phone, Mail } from 'lucide-react';
-import { homeImages, logoImg } from '../assets/image';
+import { footerBg, logoImg } from '../assets/image';
 import '../styles/Footer.css';
 
 const Footer = ({ onNavigate }) => {
@@ -24,7 +24,7 @@ const Footer = ({ onNavigate }) => {
         <footer className="footer">
             <div
                 className="section-bg-image"
-                style={{ backgroundImage: `url(${homeImages.img3})` }}
+                style={{ backgroundImage: `url(${footerBg})` }}
                 aria-hidden="true"
             />
             <div className="footer-bg-glow" />

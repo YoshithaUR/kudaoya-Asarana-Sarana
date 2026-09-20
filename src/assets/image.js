@@ -10,8 +10,9 @@ import sunil from './communityMember/sunil.jpeg';
 import aruna from './communityMember/aruna.jpeg';
 import thilaka from './communityMember/thilaka.jpeg';
 import logo from './logo.png';
-import contactbg from './contact/bg.jpg'
+import contactbg from './contact/bg.jpg';
 import joinsection from './contact/join.jpg';
+import footerBg from './contact/footer.jpg';
 
 export const homeImages = {
     img1,
@@ -36,9 +37,10 @@ export const communityMemberImages = {
 export const contactbgImages = {
     contactbg,
     joinsection,
-}
+    footerBg,
+};
 
-export { contactbg, joinsection };
+export { contactbg, joinsection, footerBg };
 
 export const logoImg = logo;
 
