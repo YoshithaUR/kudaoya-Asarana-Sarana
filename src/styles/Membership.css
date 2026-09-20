@@ -9,6 +9,22 @@
     color: #e2e8f0;
 }
 
+/* ── Background Image & Overlay ── */
+.membership-bg-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.membership-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
 .membership-container {
     position: relative;
     z-index: 10;

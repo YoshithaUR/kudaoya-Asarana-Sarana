@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Play, Heart } from 'lucide-react';
 import heroBg from '../assets/hero-bg.png';
 import { slideImages } from '../assets/image';
+import { useData } from '../context/DataContext';
 import '../styles/Hero.css';
 
 /* ── Simple animated counter hook ── */
@@ -31,9 +32,12 @@ function useCounter(target, duration = 1800) {
 }
 
 const Hero = () => {
-    const members = useCounter(189);
-    const years = useCounter(35);
-    const lives = useCounter(35);
+    const { siteData } = useData();
+    const heroData = siteData?.hero || {};
+
+    const members = useCounter(heroData.membersCount || 189);
+    const years = useCounter(heroData.yearsCount || 35);
+    const lives = useCounter(heroData.projectsCount || 35);
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
@@ -91,23 +95,22 @@ const Hero = () => {
                     {/* Eyebrow */}
                     <div className="hero-eyebrow">
                         <span className="hero-eyebrow-dot" />
-                        <span className="en-text">Empowering Communities Since 1991</span>
+                        <span className="en-text">{heroData.eyebrow || 'Empowering Communities Since 1991'}</span>
                     </div>
 
                     {/* Title */}
                     <h1 className="hero-title">
-                        <span className="hero-title-line1">කුඩාඔය</span>
+                        <span className="hero-title-line1">{heroData.titleLine1 || 'කුඩාඔය'}</span>
                         <span className="hero-title-main">
-                            <span className="hero-title-accent">අසරණ සරණ</span>
+                            <span className="hero-title-accent">{heroData.titleAccent || 'අසරණ සරණ'}</span>
                             {' '}
-                            <span className="hero-title-plain">සමිතිය</span>
+                            <span className="hero-title-plain">{heroData.titlePlain || 'සමිතිය'}</span>
                         </span>
                     </h1>
 
                     {/* Subtitle */}
                     <p className="hero-subtitle si-text">
-                        නව ලොවක් කරා පියනගන අපගේ ගමනට ඔබත් එක්වන්න.
-                        සහයෝගය සහ සංවර්ධනය තුළින් ශක්තිමත් හෙටක්.
+                        {heroData.subtitle || 'නව ලොවක් කරා පියනගන අපගේ ගමනට ඔබත් එක්වන්න.'}
                     </p>
 
                     {/* CTA Buttons */}
@@ -137,7 +140,7 @@ const Hero = () => {
                         <div className="stat-divider" />
                         <div className="hero-stat-item">
                             <span className="stat-number">{lives}+</span>
-                            <span className="stat-label si-text">ව්‍යාප්‍රති ගණන</span>
+                            <span className="stat-label si-text">ව්‍යාපෘති ගණන</span>
                         </div>
                     </div>
                 </div>

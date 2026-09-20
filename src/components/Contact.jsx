@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, Facebook, Twitter, Instagram, Headset } from 'lucide-react';
+import { contactbg } from '../assets/image';
+import { useData } from '../context/DataContext';
 import '../styles/Contact.css';
 
 const Contact = () => {
+    const { addArrayItem } = useData();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -19,6 +22,13 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Save to DataContext inquiry storage
+        addArrayItem('inquiries', {
+            ...formData,
+            status: 'Unread',
+            date: new Date().toISOString().split('T')[0]
+        });
 
         const phoneNumber = "94776844558"; // The WhatsApp number with country code
         const message = `*Kudaoya Asarana Sarana Samithiya - New Contact*\n\n` +
@@ -42,6 +52,11 @@ const Contact = () => {
 
     return (
         <section className="contact" id="contact">
+
+            {/* ── Background Image & Black Overlay ── */}
+            <div className="contact-bg-image" style={{ backgroundImage: `url(${contactbg})` }} aria-hidden="true">
+                <div className="contact-bg-overlay" />
+            </div>
 
             {/* ── Background ── */}
             <div className="contact-grid-bg" aria-hidden="true" />

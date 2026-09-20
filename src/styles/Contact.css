@@ -10,6 +10,22 @@
     color: #e2e8f0;
 }
 
+/* ── Background Image & Black Overlay ── */
+.contact-bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contact-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(2, 4, 10, 0.78) 0%, rgba(2, 4, 10, 0.85) 50%, rgba(2, 4, 10, 0.9) 100%);
+}
+
 /* ── Background & Orbs ── */
 .contact-grid-bg {
     position: absolute;

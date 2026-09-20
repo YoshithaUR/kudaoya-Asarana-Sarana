@@ -3,6 +3,7 @@ import {
     BookOpen, Stethoscope, Users, Briefcase, Sprout,
     HeartHandshake, ArrowRight, X, Info, ChevronLeft, ChevronRight
 } from 'lucide-react';
+import { useData } from '../context/DataContext';
 import '../styles/Services.css';
 
 const servicesData = [
@@ -105,6 +106,9 @@ const servicesData = [
 ];
 
 const Services = () => {
+    const { siteData } = useData();
+    const activeServicesList = siteData?.services || servicesData;
+
     const [activeService, setActiveService] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardsToShow, setCardsToShow] = useState(3);

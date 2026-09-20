@@ -1,43 +1,63 @@
-import { useState, useEffect } from 'react'
-import Loader from './components/Loader'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Team from './components/Team'
-import Membership from './components/Membership'
-import Services from './components/Services'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import HistoryPage from './components/HistoryPage'
-import './styles/App.css'
+import { useState, useEffect } from 'react';
+import Loader from './components/Loader';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Team from './components/Team';
+import Membership from './components/Membership';
+import Services from './components/Services';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import HistoryPage from './components/HistoryPage';
+import AdminDashboard from './admin/AdminDashboard';
+import { DataProvider } from './context/DataContext';
+import './styles/App.css';
 
-function App() {
+function MainApp() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [isAdminView, setIsAdminView] = useState(false);
+
+  const checkRoute = () => {
+    const path = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+
+    if (path.includes('/admin') || path.includes('/admion') || hash === '#admin' || hash === '#admion') {
+      setIsAdminView(true);
+    } else if (hash === '#history') {
+      setIsAdminView(false);
+      setCurrentPage('history');
+    } else {
+      setIsAdminView(false);
+      setCurrentPage('home');
+    }
+  };
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash === '#history') {
-        setCurrentPage('history');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        setCurrentPage('home');
-      }
+    checkRoute();
+    window.addEventListener('hashchange', checkRoute);
+    window.addEventListener('popstate', checkRoute);
+    return () => {
+      window.removeEventListener('hashchange', checkRoute);
+      window.removeEventListener('popstate', checkRoute);
     };
-
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const handleNavigate = (page, href) => {
-    if (page === 'history' || href === '#history') {
+    if (page === 'admin' || href === '#admin') {
+      window.history.pushState({}, '', '/admin');
+      setIsAdminView(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'history' || href === '#history') {
+      window.history.pushState({}, '', '/#history');
       window.location.hash = '#history';
+      setIsAdminView(false);
       setCurrentPage('history');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
+      window.history.pushState({}, '', href || '/');
       window.location.hash = href || '#home';
+      setIsAdminView(false);
       setCurrentPage('home');
       if (href) {
         setTimeout(() => {
@@ -50,6 +70,12 @@ function App() {
       }
     }
   };
+
+  if (isAdminView) {
+    return (
+      <AdminDashboard onNavigateToSite={() => handleNavigate('home', '#home')} />
+    );
+  }
 
   return (
     <div className="app">
@@ -72,7 +98,15 @@ function App() {
       </main>
       <Footer onNavigate={handleNavigate} />
     </div>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <DataProvider>
+      <MainApp />
+    </DataProvider>
+  );
+}
+
+export default App;

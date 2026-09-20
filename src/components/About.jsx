@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Target, Heart, TrendingUp, ShieldCheck, HeartPulse, ChevronLeft, ChevronRight } from 'lucide-react';
 import aboutImg from '../assets/about-img.png';
+import { useData } from '../context/DataContext';
 import '../styles/About.css';
 
 const valuesData = [
@@ -27,6 +28,9 @@ const valuesData = [
 ];
 
 const About = () => {
+    const { siteData } = useData();
+    const aboutData = siteData?.about || {};
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
 
@@ -69,14 +73,13 @@ const About = () => {
                 <div className="about-header">
                     <div className="about-badge">
                         <span className="about-badge-dot" />
-                        <span className="en-text">Our Story</span>
+                        <span className="en-text">{aboutData.eyebrow || 'Our Story'}</span>
                     </div>
                     <h2 className="about-title">
-                        අපි <span className="about-title-accent">කවුද?</span>
+                        {aboutData.titleLine1 || 'අපි'} <span className="about-title-accent">{aboutData.titleAccent || 'කවුද?'}</span>
                     </h2>
                     <p className="about-desc si-text">
-                        කුඩාඔය අසරණ සරණ සමිතිය යනු හුදෙක් සංවිධානයක් පමණක් නොව, ජීවිත ආලෝකමත් කරන,
-                        ප්‍රජාව වෙනුවෙන් දහඩිය හෙලන සැබෑ මානුෂීය බැඳීමකි.
+                        {aboutData.desc1 || 'කුඩාඔය අසරණ සරණ සමිතිය යනු හුදෙක් සංවිධානයක් පමණක් නොව, ජීවිත ආලෝකමත් කරන සැබෑ මානුෂීය බැඳීමකි.'}
                     </p>
                 </div>
 
@@ -88,12 +91,10 @@ const About = () => {
                         <h3 className="si-text">අපගේ ප්‍රධාන <span style={{ color: '#a5b4fc' }}>මෙහෙවර</span></h3>
 
                         <p className="about-body-text si-text">
-                            සමාජයේ අසරණ අයට සහන සැලසීම සහ ප්‍රජාව සංවර්ධනය කිරීම අපගේ ප්‍රධාන අරමුණයි.
-                            අපි විශ්වාස කරන්නේ එක්ව වැඩ කිරීමෙන් අපට වඩා හොඳ, ශක්තිමත් අනාගතයක් ගොඩනගා ගත හැකි බවයි.
+                            {aboutData.desc1}
                         </p>
                         <p className="about-body-text si-text">
-                            වසර ගණනාවක අත්දැකීම් සමඟින්, අධ්‍යාපනය, සෞඛ්‍ය සේවා සහ සමාජ සවිබල ගැන්වීම් ව්‍යාපෘති හරහා
-                            දහස් ගණනකගේ ජීවිත වෙනස් කිරීමට අපට හැකි වී තිබේ. අපගේ සෑම පියවරක්ම ඔබ වෙනුවෙනි.
+                            {aboutData.desc2}
                         </p>
 
                         {/* Value Cards Slider / Grid */}

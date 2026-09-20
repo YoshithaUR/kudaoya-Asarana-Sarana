@@ -1,62 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Facebook, MessageCircle, Phone, Heart, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { homeImages, communityMemberImages } from '../assets/image';
+import { homeImages } from '../assets/image';
+import { useData } from '../context/DataContext';
 import '../styles/Team.css';
 
-// Placeholder images since specific ones aren't provided
-const teamMembers = [
-    {
-        id: 1,
-        name: 'සුනිල් විජයානන්ද',
-        role: 'සභාපති',
-        img: communityMemberImages.sunil,
-        quote: <>"1991 දී මා ආරම්භ කළ මෙම අසරණ සරණ සමිතිය, "සතහට සෙත" තේමාව ඔස්සේ එදා සිට අද දක්වා විශාල සේවාවක් ඉටු කර ඇත. ඉදිරියටත් විවිධ ක්ෂේත්‍ර ඔස්සේ ප්‍රදේශවාසී ජනතාවට සෙත සැලසීම සහ එම සිහිනය සැබෑ කරගැනීම මාගේ එකම අරමුණයි."</>,
-        icon: <Heart size={16} strokeWidth={2.5} />
-    },
-    {
-        id: 2,
-        name: 'අරුණ වික්‍රමරත්න',
-        role: 'උප සභාපති',
-        img: communityMemberImages.aruna,
-        quote: <>"1991 දී මා ආරම්භ කළ මෙම අසරණ සරණ සමිතිය, "සතහට සෙත" තේමාව ඔස්සේ එදා සිට අද දක්වා විශාල සේවාවක් ඉටු කර ඇත. ඉදිරියටත් විවිධ ක්ෂේත්‍ර ඔස්සේ ප්‍රදේශවාසී ජනතාවට සෙත සැලසීම සහ එම සිහිනය සැබෑ කරගැනීම මාගේ එකම අරමුණයි."</>,
-        icon: <Heart size={16} strokeWidth={2.5} />
-    },
-
-    {
-        id: 3,
-        name: 'තිලකා කුලසූරිය',
-        role: 'ලේකම්',
-        img: communityMemberImages.thilaka,
-        quote: '"සෑම ජීවිතයකම වටිනාකම හඳුනාගෙන, අත්වැල් බැඳගෙන ගමන් කරමු."',
-        icon: <MessageCircle size={16} strokeWidth={2.5} />
-    },
-    {
-        id: 4,
-        name: 'අජිත් ජයසූරිය',
-        role: 'උප ලේකම්',
-        img: communityMemberImages.sunil,
-        quote: <>"1991 දී මා ආරම්භ කළ මෙම අසරණ සරණ සමිතිය, "සතහට සෙත" තේමාව ඔස්සේ එදා සිට අද දක්වා විශාල සේවාවක් ඉටු කර ඇත. ඉදිරියටත් විවිධ ක්ෂේත්‍ර ඔස්සේ ප්‍රදේශවාසී ජනතාවට සෙත සැලසීම සහ එම සිහිනය සැබෑ කරගැනීම මාගේ එකම අරමුණයි."</>,
-        icon: <Heart size={16} strokeWidth={2.5} />
-    },
-    {
-        id: 5,
-        name: 'කරුනාතිලක හෙට්ටිආරච්චි',
-        role: 'ගරු භාණ්ඩාගාරික',
-        img: 'https://ui-avatars.com/api/?name=S+R&background=1e293b&color=cbd5e1&size=256',
-        quote: '"විශ්වාසය හා විනිවිදභාවය අප පදනමේ ප්‍රධාන ශක්තියයි."',
-        icon: <Phone size={16} strokeWidth={2.5} />
-    },
-    // {
-    //     id: 4,
-    //     name: 'අජිත් දිසානායක',
-    //     role: 'ප්‍රධාන සංවිධායක',
-    //     img: 'https://ui-avatars.com/api/?name=A+D&background=1e293b&color=cbd5e1&size=256',
-    //     quote: '"යහපත් අරමුණු වෙනුවෙන් ජනතාව ඒකරාශී කිරීම අපගේ වගකීමකි."',
-    //     icon: <Facebook size={16} strokeWidth={2.5} />
-    // }
-];
-
 const Team = () => {
+    const { siteData } = useData();
+    const teamMembers = siteData?.team || [];
     const [activeMember, setActiveMember] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardsToShow, setCardsToShow] = useState(3);
@@ -75,12 +25,13 @@ const Team = () => {
 
     /* Auto Play Slider */
     useEffect(() => {
-        if (activeMember) return;
+        if (activeMember || teamMembers.length === 0) return;
+        const maxIdx = Math.max(1, teamMembers.length - cardsToShow + 1);
         const interval = setInterval(() => {
-            setCurrentIndex(prev => (prev + 1) % (teamMembers.length - cardsToShow + 1));
+            setCurrentIndex(prev => (prev + 1) % maxIdx);
         }, 6500);
         return () => clearInterval(interval);
-    }, [activeMember, cardsToShow]);
+    }, [activeMember, cardsToShow, teamMembers]);
 
     /* Lock body scroll when modal is open */
     useEffect(() => {
