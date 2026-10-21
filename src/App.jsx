@@ -11,24 +11,34 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import HistoryPage from './components/HistoryPage';
 import AdminDashboard from './admin/AdminDashboard';
+import AdminLogin from './admin/AdminLogin';
 import { DataProvider } from './context/DataContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import './styles/App.css';
 
 function MainApp() {
   const [currentPage, setCurrentPage] = useState('home');
   const [isAdminView, setIsAdminView] = useState(false);
+  const [isLoginView, setIsLoginView] = useState(false);
+  const { authed, login, logout } = useAuth();
 
   const checkRoute = () => {
     const path = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
 
-    if (path.includes('/admin') || path.includes('/admion') || hash === '#admin' || hash === '#admion') {
+    if (path.includes('/admin') || hash === '#admin') {
+      setIsLoginView(false);
       setIsAdminView(true);
+    } else if (path.includes('/login')) {
+      setIsAdminView(false);
+      setIsLoginView(true);
     } else if (hash === '#history') {
       setIsAdminView(false);
+      setIsLoginView(false);
       setCurrentPage('history');
     } else {
       setIsAdminView(false);
+      setIsLoginView(false);
       setCurrentPage('home');
     }
   };
@@ -43,21 +53,28 @@ function MainApp() {
     };
   }, []);
 
+  // If session expired while on admin view, redirect to login
+  useEffect(() => {
+    if (isAdminView && !authed) {
+      window.history.pushState({}, '', '/login');
+      setIsAdminView(false);
+      setIsLoginView(true);
+    }
+  }, [authed, isAdminView]);
+
   const handleNavigate = (page, href) => {
-    if (page === 'admin' || href === '#admin') {
-      window.history.pushState({}, '', '/admin');
-      setIsAdminView(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (page === 'history' || href === '#history') {
+    if (page === 'history' || href === '#history') {
       window.history.pushState({}, '', '/#history');
       window.location.hash = '#history';
       setIsAdminView(false);
+      setIsLoginView(false);
       setCurrentPage('history');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       window.history.pushState({}, '', href || '/');
       window.location.hash = href || '#home';
       setIsAdminView(false);
+      setIsLoginView(false);
       setCurrentPage('home');
       if (href) {
         setTimeout(() => {
@@ -71,12 +88,61 @@ function MainApp() {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    window.history.pushState({}, '', '/login');
+    setIsAdminView(false);
+    setIsLoginView(true);
+  };
+
+  // ── ADMIN ROUTE (protected) ──────────────────────────────────────────────
   if (isAdminView) {
+    if (!authed) {
+      // Not authenticated → redirect to login
+      window.history.replaceState({}, '', '/login');
+      return (
+        <AdminLogin
+          onLoginSuccess={() => {
+            login();
+            window.history.pushState({}, '', '/admin');
+            setIsLoginView(false);
+            setIsAdminView(true);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        />
+      );
+    }
     return (
-      <AdminDashboard onNavigateToSite={() => handleNavigate('home', '#home')} />
+      <AdminDashboard
+        onNavigateToSite={() => handleNavigate('home', '#home')}
+        onLogout={handleLogout}
+      />
     );
   }
 
+  // ── LOGIN ROUTE ───────────────────────────────────────────────────────────
+  if (isLoginView) {
+    // If already logged in, skip login and go straight to admin
+    if (authed) {
+      window.history.replaceState({}, '', '/admin');
+      setIsLoginView(false);
+      setIsAdminView(true);
+      return null;
+    }
+    return (
+      <AdminLogin
+        onLoginSuccess={() => {
+          login();
+          window.history.pushState({}, '', '/admin');
+          setIsLoginView(false);
+          setIsAdminView(true);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+    );
+  }
+
+  // ── PUBLIC SITE ───────────────────────────────────────────────────────────
   return (
     <div className="app">
       <Loader />
@@ -103,9 +169,11 @@ function MainApp() {
 
 function App() {
   return (
-    <DataProvider>
-      <MainApp />
-    </DataProvider>
+    <AuthProvider>
+      <DataProvider>
+        <MainApp />
+      </DataProvider>
+    </AuthProvider>
   );
 }
 

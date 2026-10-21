@@ -14,7 +14,7 @@ import SettingsAdmin from './sections/SettingsAdmin';
 import { CheckCircle2 } from 'lucide-react';
 import './styles/Admin.css';
 
-const AdminDashboard = ({ onNavigateToSite }) => {
+const AdminDashboard = ({ onNavigateToSite, onLogout }) => {
     const [activeTab, setActiveTab] = useState('overview');
     const [searchTerm, setSearchTerm] = useState('');
     const [toastMessage, setToastMessage] = useState(null);
@@ -59,6 +59,7 @@ const AdminDashboard = ({ onNavigateToSite }) => {
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 onNavigateToSite={onNavigateToSite}
+                onLogout={onLogout}
             />
 
             <div className="admin-main">

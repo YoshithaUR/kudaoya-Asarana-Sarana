@@ -310,7 +310,7 @@
 .hero-subtitle {
     font-family: 'Noto Sans Sinhala', sans-serif !important;
     font-size: clamp(0.9rem, 1.3vw, 1.05rem) !important;
-    color: #94a3b8 !important;
+    color: #ffffff !important;
     line-height: 1.7 !important;
     max-width: 480px;
     margin-bottom: 2.5rem !important;
@@ -432,7 +432,7 @@
 .stat-label {
     font-family: 'Noto Sans Sinhala', sans-serif;
     font-size: 0.78rem;
-    color: #64748b;
+    color: #ffffff;
     font-weight: 500;
 }
 

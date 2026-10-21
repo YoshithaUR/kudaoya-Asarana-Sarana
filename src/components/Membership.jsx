@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import { Download, FileText, UserPlus, CheckCircle, Send, Check } from 'lucide-react';
+import React from 'react';
+import { Download, FileText, UserPlus, Eye } from 'lucide-react';
 import { joinsection } from '../assets/image';
-import { useData } from '../context/DataContext';
+import { membershipFormPdf } from '../assets/image';
 import '../styles/Membership.css';
 
 const Membership = () => {
-    const { addArrayItem } = useData();
-    const [formData, setFormData] = useState({ name: '', nic: '', phone: '', address: '' });
-    const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        addArrayItem('memberships', {
-            ...formData,
-            status: 'Pending',
-            date: new Date().toISOString().split('T')[0]
-        });
-        setSubmitted(true);
-        setFormData({ name: '', nic: '', phone: '', address: '' });
+    const handleGetForm = () => {
+        // Open for viewing in a new tab
+        window.open(membershipFormPdf, '_blank', 'noopener,noreferrer');
+
+        // Trigger download
+        const link = document.createElement('a');
+        link.href = membershipFormPdf;
+        link.download = 'kudaoyaAsaranaSarana.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -75,68 +74,41 @@ const Membership = () => {
                     <div className="membership-action-card">
                         <div className="action-card-glow"></div>
 
-                        {submitted ? (
-                            <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
-                                <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', color: '#10B981', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
-                                    <Check size={28} />
-                                </div>
-                                <h4 className="si-text" style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '0.5rem' }}>අයදුම්පත සාර්ථකව යොමු කරන ලදී!</h4>
-                                <p className="si-text" style={{ color: '#cbd5e1', fontSize: '0.9rem', marginBottom: '1rem' }}>ඔබගේ සාමාජික අයදුම්පත අපගේ පරිපාලක මණ්ඩලය වෙත ලැබී ඇත.</p>
-                                <button className="btn-download" style={{ border: 'none', cursor: 'pointer' }} onClick={() => setSubmitted(false)}>
-                                    තවත් අයදුම්පතක් යොමු කරන්න
-                                </button>
+                        <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
+                            {/* PDF icon */}
+                            <div style={{
+                                width: '64px',
+                                height: '64px',
+                                borderRadius: '50%',
+                                background: 'rgba(99, 102, 241, 0.18)',
+                                color: '#818CF8',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: '0 auto 1.25rem'
+                            }}>
+                                <FileText size={30} />
                             </div>
-                        ) : (
-                            <>
-                                <h4 className="si-text" style={{ color: '#fff', marginBottom: '1rem', fontSize: '1.2rem' }}>ඔන්ලයින් සාමාජික අයදුම්පත</h4>
-                                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%', textAlign: 'left' }}>
-                                    <input
-                                        type="text"
-                                        placeholder="ඔබගේ සම්පූර්ණ නම"
-                                        required
-                                        className="membership-input"
-                                        style={{ background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '8px', padding: '0.6rem 0.8rem', color: '#fff', fontSize: '0.88rem' }}
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    />
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-                                        <input
-                                            type="text"
-                                            placeholder="ජා.හැ. අංකය (NIC)"
-                                            required
-                                            style={{ background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '8px', padding: '0.6rem 0.8rem', color: '#fff', fontSize: '0.88rem' }}
-                                            value={formData.nic}
-                                            onChange={(e) => setFormData({ ...formData, nic: e.target.value })}
-                                        />
-                                        <input
-                                            type="text"
-                                            placeholder="දුරකථන අංකය"
-                                            required
-                                            style={{ background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '8px', padding: '0.6rem 0.8rem', color: '#fff', fontSize: '0.88rem' }}
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        placeholder="ලිපිනය"
-                                        required
-                                        style={{ background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '8px', padding: '0.6rem 0.8rem', color: '#fff', fontSize: '0.88rem' }}
-                                        value={formData.address}
-                                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                                    />
-                                    <button type="submit" className="btn-download" style={{ border: 'none', cursor: 'pointer', marginTop: '0.5rem' }}>
-                                        <Send size={18} />
-                                        <span className="si-text">අයදුම්පත යොමු කරන්න</span>
-                                    </button>
-                                </form>
-                                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-                                    <a href="/Membership_Application.pdf" download="Membership_Application.pdf" style={{ color: '#818CF8', fontSize: '0.82rem', textDecoration: 'underline' }}>
-                                        හෝ PDF අයදුම්පත බාගත කරන්න
-                                    </a>
-                                </div>
-                            </>
-                        )}
+
+                            <h4 className="si-text" style={{ color: '#fff', fontSize: '1.15rem', marginBottom: '0.5rem' }}>
+                                ඔන්ලයින් සාමාජික අයදුම්පත
+                            </h4>
+                            <p className="si-text" style={{ color: '#cbd5e1', fontSize: '0.88rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+                                සාමාජික අයදුම්පත PDF ලෙස බාගත කර,<br />
+                                නිවැරදිව සම්පූර්ණ කර අපව භාර දෙන්න.
+                            </p>
+
+                            <button
+                                id="get-membership-form-btn"
+                                className="btn-download"
+                                onClick={handleGetForm}
+                                style={{ border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                            >
+                                <Eye size={18} />
+                                <span className="si-text">අයදුම්පත ලබාගන්න</span>
+                                <Download size={16} />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -79,7 +79,7 @@
 .membership-desc {
     font-family: 'Noto Sans Sinhala', sans-serif;
     font-size: 0.95rem;
-    color: #94a3b8;
+    color: #ffffff;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.7;
@@ -137,6 +137,7 @@
 .step-text p {
     margin-bottom: 0;
     font-size: 0.9rem;
+    color: #ffffff;
 }
 
 /* ── Action Card ── */
@@ -183,6 +184,7 @@
 
 .membership-action-card p {
     font-size: 0.88rem;
+    color: #ffffff;
     margin-bottom: 2rem;
     position: relative;
     z-index: 1;

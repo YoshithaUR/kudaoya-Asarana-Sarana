@@ -153,6 +153,29 @@
     border-color: #818CF8;
 }
 
+.btn-logout-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(239, 68, 68, 0.06);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    color: #f87171;
+    padding: 0.7rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-logout-sidebar:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
 /* ── MAIN CONTENT AREA ── */
 .admin-main {
     flex: 1;

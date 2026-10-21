@@ -1,3 +1,4 @@
+import membershipFormPdf from './form/kudaoyaAsaranaSarana.pdf';
 import img1 from './home/1.jpg';
 import img2 from './home/2.jpg';
 import img3 from './home/3.jpg';
@@ -43,5 +44,7 @@ export const contactbgImages = {
 export { contactbg, joinsection, footerBg };
 
 export const logoImg = logo;
+
+export { membershipFormPdf };
 
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import {
     LayoutDashboard, Image, Info, Users, Briefcase,
-    HeartHandshake, FileCheck, Mail, History, Settings, ExternalLink, ShieldCheck
+    HeartHandshake, FileCheck, Mail, History, Settings, ExternalLink, ShieldCheck, LogOut
 } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
-const AdminSidebar = ({ activeTab, setActiveTab, onNavigateToSite }) => {
+const AdminSidebar = ({ activeTab, setActiveTab, onNavigateToSite, onLogout }) => {
     const { siteData } = useData();
 
     const pendingMemberships = siteData.memberships?.filter(m => m.status === 'Pending').length || 0;
@@ -64,6 +64,10 @@ const AdminSidebar = ({ activeTab, setActiveTab, onNavigateToSite }) => {
                 <button onClick={onNavigateToSite} className="btn-view-site">
                     <ExternalLink size={16} />
                     <span>View Live Website</span>
+                </button>
+                <button onClick={onLogout} className="btn-logout-sidebar">
+                    <LogOut size={16} />
+                    <span>Sign Out</span>
                 </button>
             </div>
         </aside>
