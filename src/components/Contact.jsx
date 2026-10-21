@@ -30,7 +30,7 @@ const Contact = () => {
             date: new Date().toISOString().split('T')[0]
         });
 
-        const phoneNumber = "94776844558"; // The WhatsApp number with country code
+        const phoneNumber = "94712575516"; // The WhatsApp number with country code
         const message = `*Kudaoya Asarana Sarana Samithiya - New Contact*\n\n` +
             `*නම (Name):* ${formData.name}\n` +
             `*විද්‍යුත් තැපෑල (Email):* ${formData.email}\n` +
