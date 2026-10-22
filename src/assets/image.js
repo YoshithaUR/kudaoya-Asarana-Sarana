@@ -10,6 +10,7 @@ import slide5 from './home/slide/5.jpeg';
 import sunil from './communityMember/sunil.jpeg';
 import aruna from './communityMember/aruna.jpeg';
 import thilaka from './communityMember/thilaka.jpeg';
+import ajithjay from './communityMember/ajith.png';
 import logo from './logo.png';
 import contactbg from './contact/bg.jpg';
 import joinsection from './contact/join.jpg';
@@ -32,7 +33,8 @@ export const slideImages = [
 export const communityMemberImages = {
     sunil,
     aruna,
-    thilaka
+    thilaka,
+    ajithjay,
 };
 
 export const contactbgImages = {

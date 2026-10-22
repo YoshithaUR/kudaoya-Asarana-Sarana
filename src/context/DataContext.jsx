@@ -49,14 +49,14 @@ const defaultData = {
             name: 'තිලකා කුලසූරිය',
             role: 'ලේකම්',
             img: communityMemberImages.thilaka,
-            quote: 'සෑම ජීවිතයකම වටිනාකම හඳුනාගෙන, අත්වැල් බැඳගෙන ගමන් කරමු.',
+            quote: 'කුඩාඔය අසරණ සරණ සමිතිය කරනුලබන මහා ප්‍රජා සත්කාරයට මාගේ උපරිමයෙන් සහය දැක්වීම ඒකායන අරමුනයි.',
             phone: '+94 77 345 6789'
         },
         {
             id: 4,
             name: 'අජිත් ජයසූරිය',
             role: 'උප ලේකම්',
-            img: communityMemberImages.sunil,
+            img: communityMemberImages.ajithjay,
             quote: 'අනාගත පරපුර උදෙසා යහපත් පරිසරයක් සහ අනාගතයක් ගොඩනැගීමට කැපවෙමු.',
             phone: '+94 77 456 7890'
         },
@@ -65,7 +65,7 @@ const defaultData = {
             name: 'කරුනාතිලක හෙට්ටිආරච්චි',
             role: 'ගරු භාණ්ඩාගාරික',
             img: 'https://ui-avatars.com/api/?name=Karunathilaka+H&background=1e293b&color=cbd5e1&size=256',
-            quote: 'විශ්වාසය හා විනිවිදභාවය අප පදනමේ ප්‍රධාන ශක්තියයි.',
+            quote: 'විශ්වාසය හා විනිවිදභාවය අප පදනමේ ප්‍රධාන ශක්තියයි. සමිතියෙන් ගන්නා යහපත් තීරන අනුව මුදල් වියපැහැදම් කිරීම හා සමීතියේ මුදල් ආරක්ෂා කිරීම මාගේ ඒකායන අරමුනයි.',
             phone: '+94 77 567 8901'
         }
     ],
@@ -232,6 +232,10 @@ const defaultData = {
 
 export const DataProvider = ({ children }) => {
     const [siteData, setSiteData] = useState(() => {
+        if (import.meta.env.DEV) {
+            return defaultData;
+        }
+
         const saved = localStorage.getItem('kudaoya_site_data');
         if (saved) {
             try {
@@ -244,7 +248,9 @@ export const DataProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        localStorage.setItem('kudaoya_site_data', JSON.stringify(siteData));
+        if (!import.meta.env.DEV) {
+            localStorage.setItem('kudaoya_site_data', JSON.stringify(siteData));
+        }
     }, [siteData]);
 
     // Helpers to update data

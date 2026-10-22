@@ -3,6 +3,8 @@ import {
     Calendar, Award, Users, Heart, ShieldCheck, Milestone,
     ArrowLeft, ChevronRight, BookOpen, Sparkles, CheckCircle2, History as HistoryIcon
 } from 'lucide-react';
+import { HandCoins } from 'lucide-react';
+import { Presentation } from 'lucide-react';
 import { homeImages, communityMemberImages, logoImg } from '../assets/image';
 import '../styles/HistoryPage.css';
 
@@ -11,7 +13,7 @@ const milestones = [
         year: '1991',
         title: 'සමිති අත්තිවාරම පිහිටුවීම',
         subtitle: 'Foundation of Kudaoya Asarana Sarana',
-        description: 'කුඩාඔය ප්‍රදේශයේ ආපදාවට පත්, අසරණ වූ ගම්වාසීන්ට සහ අනාථ පවුල් සඳහා අත්වැලක් වීම උදෙසා ග්‍රාමීය ප්‍රධානීන්දෙපළකගේ මූලිකත්වයෙන් සමිතිය ආරම්භ කරන ලදී.',
+        description: 'කුඩාඔය ප්‍රදේශයේ ආපදාවට පත්, අසරණ වූ ගම්වාසීන්ට සහ නොයෙක් ව්‍යවසනයන්ට මුහුනදුන් පවුල් සඳහා අත්වැලක් වීම උදෙසා ග්‍රාමීය ප්‍රධානීන්දෙපළකගේ මූලිකත්වයෙන් සමිතිය ආරම්භ කරන ලදී.',
         icon: Calendar,
         color: '#6366F1'
     },
@@ -19,31 +21,31 @@ const milestones = [
         year: '1998',
         title: 'නොමිලේ අවමංගල්‍යාධාර අරමුදල',
         subtitle: 'Free Funeral Aid & Relief Fund',
-        description: 'දුෂ්කර අවස්ථාවලදී සාමාජික පවුල්වල සියලුම බර දැරීම සඳහා නිල අවමංගල්‍යාධාර සහ හදිසි සහන අරමුදල පිහිටුවන ලදී.',
-        icon: Heart,
+        description: 'දුෂ්කර අවස්තා වලදී සාමාජික පවුල් වලට සියලුම සහන සැලසීම සඳහා නිල අවමංගල්‍යාධාර සහා හදිසි සහන අරමුදලක් පිහිටවන ලදි. ',
+        icon: HandCoins,
         color: '#EC4899'
     },
     {
         year: '2005',
-        title: 'ප්‍රජා ශාලාව හා පුස්තකාලය',
+        title: 'අංගසම්පූර්ණ රැස්වීම් ශාලාවක් ඉදිකරන ලදි.',
         subtitle: 'Community Hall & Library Opening',
-        description: 'ගම්මානයේ දූ දරුවන්ගේ අධ්‍යාපනික අවශ්‍යතා සඳහා නොමිලේ පොත්පත් කියවීමේ පුස්තකාලයක් සහ ප්‍රජා රැස්වීම් ශාලාවක් ඉදි කරන ලදී.',
-        icon: BookOpen,
+        description: 'විවිධ රැස්වීම්, සාකච්ඡා, පුහුණු වැඩසටහන් සහ ප්‍රජා කටයුතු සාර්ථකව පැවැත්වීම සඳහා අවශ්‍ය සියලු පහසුකම්වලින් සමන්විත අංගසම්පූර්ණ රැස්වීම් ශාලාවක් ඉදිකරන ලදී. මෙමඟින් ප්‍රදේශයේ ජනතාවට සහ සංවිධානවලට තම කටයුතු වඩාත් පහසුවෙන් හා විධිමත්ව සිදුකර ගැනීමට අවස්ථාව සැලසේ.',
+        icon: Presentation,
         color: '#10B981'
     },
     {
         year: '2012',
         title: 'වාර්ෂික ශිෂ්‍යත්ව වැඩසටහන',
         subtitle: 'Annual Educational Scholarship Project',
-        description: 'අඩු ආදායම්ලාභී පවුල්වල දක්ෂ පාසල් දරුවන් සඳහා වාර්ෂිකව පොත්පත්, පාසල් උපකරණ සහ ශිෂ්‍යත්ව පිරිනැමීම ආරම්භ කරන ලදී.',
+        description: '2012 වර්ෂයේ ආරම්භ කරන ලද වාර්ෂික ශිෂ්‍යත්ව වැඩසටහන මඟින් සෑම වසරකම අධ්‍යාපනය ලබන දරු දැරියන්ගේ අධ්‍යාපන කටයුතු සඳහා අවශ්‍ය සහයෝගය ලබාදීම අරමුණු කරගනී. වාර්ෂිකව අඛණ්ඩව ක්‍රියාත්මක කරනු ලබන මෙම වැඩසටහන තුළින් දක්ෂතා ඇති මෙන්ම ආර්ථික දුෂ්කරතා සහිත සිසුන් දිරිමත් කරමින් ඔවුන්ගේ අධ්‍යාපනික අනාගතය සාර්ථක කර ගැනීමට දායක වේ. වසරින් වසර අඛණ්ඩව පවත්වාගෙන යනු ලබන මෙම සත්කාර්යය තුළින් අනාගත පරපුරේ දැනුම, කුසලතා සහ අධ්‍යාපනික දියුණුව වෙනුවෙන් වටිනා මෙහෙවරක් ඉටු කරනු ලබයි.',
         icon: Award,
         color: '#F59E0B'
     },
     {
         year: '2018',
-        title: 'ආපදා සහන සහ වෛද්‍ය අරමුදල',
+        title: 'ආපදා සහන සහ වෛද්‍යාධාර අරමුදල',
         subtitle: 'Disaster Relief & Medical Assistance',
-        description: 'ස්වාභාවික ආපදා සහ බරපතල රෝගාබාධවලදී පවුල් සඳහා හදිසි මූල්‍යාධාර සහ වෛද්‍ය ආධාර ලබාදීමේ විශේෂ වැඩසටහන පුළුල් කිරීම.',
+        description: 'ස්වාභාවික ආපදා සහ බරපතල රෝගාබාධවලදී පවුල් සඳහා හදිසි මූල්‍යාධාර සහ වෛද්‍යාධාර ලබාදීමේ විශේෂ වැඩසටහන පුළුල් කිරීම.',
         icon: ShieldCheck,
         color: '#3B82F6'
     },
@@ -59,33 +61,33 @@ const milestones = [
 
 const historicalStats = [
     { number: '1991', label: 'ආරම්භ කළ වර්ෂය', sublabel: 'Established Year' },
-    { number: '35+', label: 'වසරක අඛණ්ඩ සේවය', sublabel: 'Years of Dedicated Service' },
-    { number: '189+', label: 'සක්‍රීය සාමාජිකයින්', sublabel: 'Active Members' },
-    { number: '500+', label: 'සෙත සැලසු පවුල් ගණන', sublabel: 'Families Empowered' }
+    { number: '35', label: 'වසරක අඛණ්ඩ සේවය', sublabel: 'Years of Dedicated Service' },
+    { number: '189+', label: 'සක්‍රීය සාමාජික පවුල් සංඛ්‍යාව', sublabel: 'Active Members' },
+    { number: '759+', label: 'සෙත සැලසු වන් ගණන', sublabel: 'Families Empowered' }
 ];
 
 const founders = [
     {
         name: 'සුනිල් රත්නායක මහතා',
-        role: 'සභාපති (Sabahapathi)',
-        period: '2010 - වර්තමානය',
+        role: 'සභාපති (President)',
+        period: '1991 - වර්තමානය',
         desc: 'සමිති ඉතිහාසයේ විප්ලවීය ප්‍රජා මෙහෙවරක් ඉටුකරමින් සාමාජිකයින් 180+ දක්වා වැඩි කිරීමට මූලිකත්වය දැක්වීය.',
         image: communityMemberImages.sunil
     },
     {
         name: 'අරුණ ශාන්ත මහතා',
-        role: 'ලේකම් (Lekam)',
-        period: '2015 - වර්තමානය',
+        role: 'උප සභාපති (Vice President)',
+        period: '1991 - වර්තමානය',
         desc: 'ගම්මානයේ තරුණ ප්‍රජාව සවිබල ගැන්වීම සහ ශිෂ්‍යත්ව ව්‍යාපෘති සාර්ථකව මෙහෙයවීම.',
         image: communityMemberImages.aruna
     },
-    {
-        name: 'තිලකා ධර්මවර්ධන මහත්මිය',
-        role: 'භාණ්ඩාගාරික (Bhandagarika)',
-        period: '2018 - වර්තමානය',
-        desc: 'සමිති මූල්‍ය විනිවිදභාවය සහ අරමුදල් කළමනාකරණය ඉහළම මට්ටමෙන් පවත්වාගෙන යාම.',
-        image: communityMemberImages.thilaka
-    }
+    // {
+    //     name: 'තිලකා ධර්මවර්ධන මහත්මිය',
+    //     role: 'භාණ්ඩාගාරික (Bhandagarika)',
+    //     period: '2018 - වර්තමානය',
+    //     desc: 'සමිති මූල්‍ය විනිවිදභාවය සහ අරමුදල් කළමනාකරණය ඉහළම මට්ටමෙන් පවත්වාගෙන යාම.',
+    //     image: communityMemberImages.thilaka
+    // }
 ];
 
 const HistoryPage = ({ onNavigate }) => {
@@ -111,15 +113,15 @@ const HistoryPage = ({ onNavigate }) => {
                     <div className="history-hero-content">
                         <div className="history-badge">
                             <HistoryIcon size={16} />
-                            <span className="en-text">ESTABLISHED 1991 | REG NO: KAS/1991/08</span>
+                            <span className="en-text">ESTABLISHED 1991 | REG NO: මපස/සු/97/22</span>
                         </div>
 
                         <h1 className="history-title si-text">
-                            අපගේ <span className="title-gradient">ඓතිහාසික ගමන</span>
+                            <span className="title-gradient">අපගේ ඓතිහාසික ගමන</span>
                         </h1>
 
                         <p className="history-subtitle si-text">
-                            1991 වසරේ සිට කුඩාඔය ගම්මානයේ අසරණ වූවන් හට සෙත සලසමින්, එකමුතුකම සහ සමාජ මෙහෙවර තුළින් ගොඩනැගූ වසර 35 ක අභිමානවත් ඉතිහාසය.
+                            1991 වසරේ සිට සංවිධානයේ සාමාජික බලප්‍රදේශ වල සාමාජිකයින් හට සෙත සලසමින්, එකමුතුකම සහ සමාජ මෙහෙවර තුළින් ගොඩනැගූ වසර 35 ක අභිමානවත් ඉතිහාසය.
                         </p>
 
                         {/* Quick Stats Grid */}
@@ -141,13 +143,13 @@ const HistoryPage = ({ onNavigate }) => {
                 <div className="container">
                     <div className="narrative-grid">
                         <div className="narrative-image-block">
-                            <div className="narrative-img-frame">
-                                <img src={homeImages.img1} alt="Kudaoya Samithiya Early Days" />
-                                <div className="narrative-img-badge">
-                                    <span className="badge-year">1991</span>
-                                    <span className="badge-txt si-text">ආරම්භක වර්ෂය</span>
-                                </div>
-                            </div>
+                            {/* <div className="narrative-img-frame"> */}
+                                    <img src={homeImages.img1} alt="Kudaoya Samithiya Early Days" />
+                                {/* <div className="narrative-img-badge"> */}
+                                    {/* <span className="badge-year">1991</span> */}
+                                    {/* <span className="badge-txt si-text">ආරම්භක වර්ෂය</span> */}
+                                {/* </div> */}
+                            {/* </div> */}
                         </div>
 
                         <div className="narrative-text-block">
@@ -156,13 +158,13 @@ const HistoryPage = ({ onNavigate }) => {
                                 <span className="si-text">ආරම්භක පදනම</span>
                             </div>
                             <h2 className="narrative-heading si-text">
-                                කුඩාඔය අසරණ සරණ සමිතිය <span className="text-highlight">ආරම්භ වූ ආකාරය</span>
+                                 <span className="text-highlight"> කුඩාඔය අසරණ සරණ සමිතිය ආරම්භ වූ ආකාරය</span>
                             </h2>
                             <p className="narrative-desc si-text">
                                 1991 වර්ෂයේදී කුඩාඔය ගම්මානයේ පැවැති ආර්ථික හා සමාජයීය අභියෝග හමුවේ, දුෂ්කරතාවලට මුහුණ දුන් ගම්වාසීන්ට උපකාර කිරීම සඳහා ගමේ වැඩිහිටියන් හා ප්‍රජා නායකයින් එක්ව මෙම සමිතිය ආරම්භ කරන ලදී.
                             </p>
                             <p className="narrative-desc si-text">
-                                ආරම්භයේදී සාමාජිකයින් 15 දෙනෙකුගෙන් පමණක් ඇරඹි මෙම සංවිධානය, අද වන විට සාමාජික පවුල් 189 කට වැඩි සංඛ්‍යාවකට නොමිලේ අවමංගල්‍යාධාර, සෞඛ්‍ය පහසුකම්, ශිෂ්‍යත්ව සහ හදිසි ආපදා සහන සලසන ප්‍රදේශයේ ප්‍රධානතම සමාජ සේවා සමිතිය බවට පත්ව ඇත.
+                                ආරම්භයේදී සාමාජිකයින් 14 දෙනෙකුගෙන් පමණක් ඇරඹි මෙම සංවිධානය, අද වන විට සාමාජික පවුල් 189 කට වැඩි සංඛ්‍යාවකට නොමිලේ අවමංගල්‍යාධාර, සෞඛ්‍ය පහසුකම්, ශිෂ්‍යත්ව සහ හදිසි ආපදා සහන සලසන ප්‍රදේශයේ ප්‍රධානතම සමාජ සේවා සමිතිය බවට පත්ව ඇත.
                             </p>
 
                             <div className="narrative-highlights">
@@ -172,7 +174,7 @@ const HistoryPage = ({ onNavigate }) => {
                                 </div>
                                 <div className="highlight-item">
                                     <CheckCircle2 size={20} className="check-icon" />
-                                    <span className="si-text">සියලුම ගම්වාසීන් උදෙසා සමාන සැලකිල්ල</span>
+                                    <span className="si-text">සියලුම ප්‍රදේශවාසීන් උදෙසා සමාන සැලකිල්ල</span>
                                 </div>
                                 <div className="highlight-item">
                                     <CheckCircle2 size={20} className="check-icon" />
@@ -190,7 +192,7 @@ const HistoryPage = ({ onNavigate }) => {
                     <div className="section-header text-center">
                         <span className="section-subtitle-badge si-text">ඓතිහාසික සන්ධිස්ථාන</span>
                         <h2 className="section-main-title si-text">
-                            වසර 35 ක <span className="title-gradient">අභිමානවත් කාලරාමුව</span>
+                             <span className="title-gradient">වසර 35 ක අභිමානවත් කාලරාමුව</span>
                         </h2>
                         <p className="section-desc si-text">
                             1991 සිට වර්තමානය දක්වා කුඩාඔය අසරණ සරණ සමිතිය ලබාගත් සුවිශේෂී ජයග්‍රහණ සහ සංවර්ධන සන්ධිස්ථාන.
@@ -235,7 +237,7 @@ const HistoryPage = ({ onNavigate }) => {
                     <div className="section-header text-center">
                         <span className="section-subtitle-badge si-text">අපගේ නායකත්වය</span>
                         <h2 className="section-main-title si-text">
-                            සමිතිය මෙහෙයවූ <span className="title-gradient">ප්‍රජා නායකයින්</span>
+                             <span className="title-gradient"> සමිතිය මෙහෙයවූ ප්‍රජා නායකයින්</span>
                         </h2>
                         <p className="section-desc si-text">
                             කුඩාඔය සමිතියේ අභිවෘද්ධිය උදෙසා කැපවීමෙන් කටයුතු කළ සභාපතිවරුන් සහ නිලධාරී මණ්ඩලය.
@@ -259,36 +261,37 @@ const HistoryPage = ({ onNavigate }) => {
                     </div>
                 </div>
             </section>
+<br></br> <br />
 
             {/* ── Historical Photo Archives ── */}
             <section className="history-gallery section-padding">
                 <div className="container">
                     <div className="section-header text-center">
-                        <span className="section-subtitle-badge si-text">ඓතිහාසික මතකයන්</span>
+                        {/* <span className="section-subtitle-badge si-text">ඓතිහාසික මතකයන්</span>
                         <h2 className="section-main-title si-text">
                             අපගේ <span className="title-gradient">ඡායාරූප එකතුව</span>
-                        </h2>
+                        </h2> */}
                     </div>
 
                     <div className="history-gallery-grid">
                         <div className="gallery-card">
                             <img src={homeImages.img1} alt="Historic Assembly" />
                             <div className="gallery-overlay">
-                                <span className="gallery-year">1991 - 2000</span>
+                                <span className="gallery-year">1991/08/11</span>
                                 <h4 className="si-text">ආරම්භක සමිති රැස්වීම්</h4>
                             </div>
                         </div>
                         <div className="gallery-card">
                             <img src={homeImages.img2} alt="Community Hall Opening" />
                             <div className="gallery-overlay">
-                                <span className="gallery-year">2005</span>
+                                <span className="gallery-year">2020/01/10</span>
                                 <h4 className="si-text">ප්‍රජා ශාලාව විවෘත කිරීම</h4>
                             </div>
                         </div>
                         <div className="gallery-card">
                             <img src={homeImages.img3} alt="Scholarship Distribution" />
                             <div className="gallery-overlay">
-                                <span className="gallery-year">2018</span>
+                                <span className="gallery-year">2017/09/15</span>
                                 <h4 className="si-text">ශිෂ්‍යත්ව ප්‍රදානෝත්සවය</h4>
                             </div>
                         </div>
